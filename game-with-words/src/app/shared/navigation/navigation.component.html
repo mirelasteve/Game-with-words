@@ -1,4 +1,18 @@
-<mat-toolbar>
+<nav class="navbar navbar-inverse navbar-expand-lg" role="navigation">
+    <div class="container-fluid">
+
+        <ul class="nav navbar nav" routerLinkActive="active">
+            <li class="nav-item"><a class="nav-link" routerLink="home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="guess-the-word">Guess the word</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="home">Crosswords</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="home">About us</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="home">Contacts</a></li>
+        </ul>
+
+    </div>
+</nav>
+<router-outlet></router-outlet>
+<!-- <mat-toolbar>
     <nav class="navbar navbar-default" role="navigation">
         <ul>
             <li>Home</li>
@@ -8,4 +22,4 @@
             <li>Contacts</li>
         </ul>
     </nav>
-</mat-toolbar>
+</mat-toolbar> -->
