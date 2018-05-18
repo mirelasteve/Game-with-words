@@ -1,1 +1,1 @@
-Game for training brain# Game-with-words
+Game for training brain

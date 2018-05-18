@@ -1,0 +1,23 @@
+{
+    "name": "GameWithWords",
+    "version": "1.0.0",
+    "description": "Game for training brain# Game-with-words",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mirelasteve/Game-with-words.git"
+    },
+    "keywords": [],
+    "author": "Mirela Tsvetkova",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/mirelasteve/Game-with-words/issues"
+    },
+    "homepage": "https://github.com/mirelasteve/Game-with-words#readme",
+    "dependencies": {
+        "@angular/cli": "^6.0.3"
+    }
+}
