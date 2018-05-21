@@ -1,10 +1,29 @@
 <div class="formGuess">
-    <h3>Guess the word: {{wordForGuess}}</h3>
-    <form>
-
-        <div>
-            <input matInput type="text" name="word" placeholder="..." value="">
+    <div class="parallax"> </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                <h3>Secret word:</h3>
+                <div class="border border-light secretWord">{{wordForGuess}}</div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3 sizeClass">
+                <form>
+                    <div>
+                        <h3>Guess the word:</h3>
+                        <input matInput #guessWord type="text" class="form-control sizeClass" name="word" (keyup)="checkWord(guessWord.value)">
+                    </div>
+                </form>
+                <!-- <div>{{guessWord.value}}</div> -->
+                <div id="wordsField"></div>
+                <span [ngClass]="{'hide':showValue, 'show':!showValue}">Great!!!</span>
+                <span [ngClass]="{'hide':showWrong, 'wrong':!showWrong}">Wrong!!!</span>
+                <span [ngClass]="{'hide':showCongrats, 'congratulanions':!showCongrats}">Congratulations!!!</span>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                <div class="answer checked"> </div>
+            </div>
+            <div class="col-sm-1 col-md-1 col-lg-1"></div>
         </div>
-        <input type="submit" value="Submit">
-    </form>
+    </div>
+
 </div>
