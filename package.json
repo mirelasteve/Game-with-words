@@ -18,6 +18,7 @@
     },
     "homepage": "https://github.com/mirelasteve/Game-with-words#readme",
     "dependencies": {
-        "@angular/cli": "^6.0.3"
+        "@angular/cli": "^6.0.3",
+        "rxjs": "^6.2.0"
     }
 }
