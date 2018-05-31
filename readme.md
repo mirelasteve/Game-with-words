@@ -1,7 +1,7 @@
 Game for training brain
 
 <p>
-  <h3Game with words></h3>
+  <h3>Game with words</h3>
 <img src='https://github.com/mirelasteve/Game-with-words/blob/master/PIctures/image-1.png' height='200px' width='500px'/>
  <img src='https://github.com/mirelasteve/Game-with-words/blob/master/PIctures/image-2.png' height='200px' width='500px'/>
  <img src='https://github.com/mirelasteve/Game-with-words/blob/master/PIctures/image-4.png' height='200px' width='500px'/ >
