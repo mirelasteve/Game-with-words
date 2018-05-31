@@ -13,7 +13,7 @@
                         <input matInput #guessWord type="text" class="form-control sizeClass" name="word" (keyup)="checkWord(guessWord.value)">
                     </div>
                 </form>
-                <!-- <div>{{guessWord.value}}</div> -->
+                <!-- <div>{{guessWord.length}}</div> -->
                 <div id="wordsField"></div>
                 <span [ngClass]="{'hide':showValue, 'show':!showValue}">Great!!!</span>
                 <span [ngClass]="{'hide':showWrong, 'wrong':!showWrong}">Wrong!!!</span>

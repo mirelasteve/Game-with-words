@@ -1,7 +1,9 @@
 import { StarPipe } from './star.pipe';
-import { Component, NgModule, Pipe, PipeTransform, OnInit, ElementRef } from '@angular/core'
+import { Component, NgModule, Pipe, PipeTransform, OnInit, ElementRef } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { DomSanitizer  } from '@angular/platform-browser';
+import { GuessTheWordService } from 'src/app/core/guess-the-word.servece/guess-the-word.service';
+
 
 @Component({
   selector: 'app-guess-the-word',
@@ -20,31 +22,36 @@ export class GuessTheWordComponent implements OnInit {
   public showWrong: boolean;
   public datas: any[];
 
-  constructor(private elementRef: ElementRef) {
+  constructor(private elementRef: ElementRef, private guessTheWordService: GuessTheWordService) {
   this.words = ['journalism', 'falcony', 'capitalism', 'mercury', 'yoghurt', 'temporary'];
-  this.datas = [{name:'Poly', age:12},{name:'Gessy', age:20},{name:'Milly', age:60}];
   this.showValue = true;
   this.showWrong = true;
   this.showCongrats = true;
   this.usedWords = new Set();
   }
-  getWord() {
-    const randomWord = Math.floor(Math.random() * (this.words.length));
-    console.log(this.words[randomWord]);
-    if(this.usedWords.has(this.words[randomWord])) {
-      if(this.usedWords.size < this.words.length){
-        this.getWord();
-      }
-      else{
-        alert('You guessed correct all words');
-      }
+  async getWord() {
+    await this.guessTheWordService.getWords()
+    .subscribe( (data) => {
+      data.forEach(element => {
+        this.words.push(element.word);
+        // console.log(this.words);
+      });
+      const randomWord = Math.floor(Math.random() * (this.words.length));
+      if (this.usedWords.has(this.words[randomWord])) {
+          if (this.usedWords.size < this.words.length){
+            this.getWord();
+          } else {
+            alert('You guessed correct all words');
+          }
 
-    }    else {
-      this.realWord = this.words[randomWord];
-      this.usedWords.add(this.realWord);
-      this.reverse(this.words[randomWord], 0);
-      return this.wordForGuess;
-    }
+        }    else {
+          this.realWord = this.words[randomWord];
+          this.usedWords.add(this.realWord);
+          this.reverse(this.words[randomWord], 0);
+          return this.wordForGuess;
+        }
+});
+
   }
   reverse(text, i) {
     if (typeof text === 'string') {
@@ -76,9 +83,10 @@ congrats() {
     return this.showCongrats = false;
 }
 checkWord(word: string) {
-  if (this.realWord.slice(0, word.length) === word && this.realWord.length === word.length && word.length > 0 ){
+  console.log(word.length);
+  if (this.realWord.slice(0, word.length) === word && this.realWord.length === word.length && word.length > 0 ) {
   this.congrats();
-  setTimeout(()=>{
+  setTimeout(()=> {
     const divWords = this.elementRef.nativeElement.querySelector('#wordsField');
     divWords.insertAdjacentHTML('beforeend', '<div>' + this.realWord + '</div>');
     this.getWord();
@@ -102,7 +110,7 @@ checkWord(word: string) {
 }
 
   ngOnInit() {
-  this.wordForGuess = this.getWord();
+ this.getWord();
   }
 
 }
